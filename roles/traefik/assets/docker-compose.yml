@@ -1,0 +1,24 @@
+#version: "3.7"
+
+services:
+  traefik:
+    image: "traefik:v3.2"
+    container_name: "traefik"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--experimental.plugins.ldapAuth.modulename=github.com/wiltonsr/ldapAuth"
+      - "--experimental.plugins.ldapAuth.version=v0.1.4"
+    ports: 
+      - "80:80"
+      - "8080:8080"
+    volumes: 
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - traefik_net
+
+networks:
+  traefik_net:

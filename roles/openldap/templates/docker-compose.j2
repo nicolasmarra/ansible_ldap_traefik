@@ -1,0 +1,19 @@
+services: 
+  openldap: 
+    image: bitnami/openldap:latest
+    container_name: openldap
+    ports:
+      - '1389:1389'
+    environment:
+      LDAP_ADMIN_USERNAME: {{openldap_admin_username}}
+      LDAP_ADMIN_PASSWORD: {{openldap_admin_password}}
+      LDAP_ROOT: {{openldap_root}}
+    volumes:
+      - {{openldap_home}}:/bitnami/openldap
+    networks:
+      - openldap_net
+    user: root
+
+
+networks:
+  openldap_net:

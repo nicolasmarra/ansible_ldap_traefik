@@ -1,0 +1,9 @@
+- name: Déployer Application Web avec Docker Compose
+  community.docker.docker_compose_v2:
+    project_src: roles/whoami/assets
+  register: result
+
+- name: Afficher les résultats
+  debug:
+    var: result
+

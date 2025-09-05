@@ -1,0 +1,31 @@
+- name : Créer le répertoire pour OpenLDAP
+  file: 
+    path: "roles/openldap/assets"
+    state: directory
+    mode: "0755"
+
+- name : Créer le fichier docker-compose.yml
+  template:
+    src: docker-compose.j2
+    dest: roles/openldap/assets/docker-compose.yml
+    mode: "0755"
+
+- name: Lancer le service docker-compose
+  community.docker.docker_compose_v2:
+    project_src: roles/openldap/assets
+
+- name: Supprimer les anciennes entrées LDAP
+  shell: ldapdelete -x -H ldap://localhost:1389 -D "cn={{openldap_admin_username}},{{openldap_root}}" -w {{openldap_admin_password}} -r "{{openldap_root}}"
+  ignore_errors: yes
+
+
+- name: Importer les données dans OpenLDAP
+  shell: ldapadd -x -H ldap://localhost:1389 -D "cn={{openldap_admin_username}}, {{openldap_root}}" -w {{openldap_admin_password}} -f roles/openldap/assets/fichier.ldif
+
+- name: Afficher les données de l'instance OpenLDAP
+  shell: ldapsearch -x -H ldap://localhost:1389 -D "cn={{openldap_admin_username}}, {{openldap_root}}" -w {{openldap_admin_password}} -b "{{openldap_root}}" 
+  register: result
+
+- name: Afficher les données récupérées
+  debug:
+    var: result.stdout

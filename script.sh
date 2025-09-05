@@ -1,0 +1,1 @@
+docker run --name openldap -p 1389:1389 -e LDAP_ADMIN_USERNAME=admin -e LDAP_ADMIN_PASSWORD=tprli -e LDAP_ROOT="dc=ansible,dc=fr" -d openldap_data:/bitnami/openldap bitnami/openldap:latest

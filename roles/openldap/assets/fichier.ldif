@@ -1,0 +1,217 @@
+dn: dc=ansible,dc=fr
+objectClass: top
+objectClass: domain
+dc: ansible
+
+dn: ou=Group,dc=ansible,dc=fr
+objectClass: organizationalUnit
+ou: Group
+
+dn: ou=People,dc=ansible,dc=fr
+objectClass: organizationalUnit
+ou: People
+
+dn: cn=jsmith,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: jsmith
+gidNumber: 1000
+
+dn: uid=jsmith,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: John Smith
+sn: Smith
+uid: jsmith
+givenName: John
+userPassword: lclcpn416jpoji
+loginShell: /bin/bash
+gidNumber: 1000
+uidNumber: 1000
+homeDirectory: /home/jsmith
+
+dn: cn=sparker,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: sparker
+gidNumber: 1001
+
+dn: uid=sparker,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Steven Parker
+sn: Parker
+uid: sparker
+givenName: Steven
+userPassword: kahczhj51vcbez
+loginShell: /bin/bash
+gidNumber: 1001
+uidNumber: 1001
+homeDirectory: /home/sparker
+
+dn: cn=bjensen,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: bjensen
+gidNumber: 1002
+
+dn: uid=bjensen,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Barbara Jensen
+sn: Jensen
+uid: bjensen
+givenName: Barbara
+userPassword: a4xwcez7vijm
+loginShell: /bin/bash
+gidNumber: 1002
+uidNumber: 1002
+homeDirectory: /home/bjensen
+
+dn: cn=smcadam,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: smcadam
+gidNumber: 1003
+
+dn: uid=smcadam,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Scott McAdam
+sn: McAdam
+uid: smcadam
+givenName: Scott
+userPassword: ur6ooh3pv5yt
+loginShell: /bin/bash
+gidNumber: 1003
+uidNumber: 1003
+homeDirectory: /home/smcadam
+
+dn: cn=pposit,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: pposit
+gidNumber: 1004
+
+dn: uid=pposit,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Paul Position
+sn: Position
+uid: pposit
+givenName: Paul
+userPassword: nbzrfg76wjoij1
+loginShell: /bin/bash
+gidNumber: 1004
+uidNumber: 1004
+homeDirectory: /home/pposit
+
+dn: cn=npaloma,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: npaloma
+gidNumber: 1005
+
+dn: uid=npaloma,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Niña Paloma
+sn: Paloma
+uid: npaloma
+givenName: Niña
+userPassword: doihv6icpk7poj
+loginShell: /bin/bash
+gidNumber: 1005
+uidNumber: 1005
+homeDirectory: /home/npaloma
+
+dn: cn=blee,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: blee
+gidNumber: 1006
+
+dn: uid=blee,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: 白 李
+sn: 李
+uid: blee
+givenName: 白
+userPassword: yzaduezyoi52p9
+loginShell: /bin/bash
+gidNumber: 1006
+uidNumber: 1006
+homeDirectory: /home/blee
+
+dn: cn=dndiaye,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: dndiaye
+gidNumber: 1007
+
+dn: uid=dndiaye,ou=People,dc=ansible,dc=fr
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Diabou Ndiaye
+sn: Ndiaye
+uid: dndiaye
+givenName: Diabou
+userPassword: wdsfrd76pojfd
+loginShell: /bin/bash
+gidNumber: 1007
+uidNumber: 1007
+homeDirectory: /home/dndiaye
+
+dn: cn=eng,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: eng
+gidNumber: 1008
+memberUid: jsmith
+memberUid: sparker
+memberUid: bjensen
+memberUid: smcadam
+
+dn: cn=sales,ou=Group,dc=ansible,dc=fr
+objectClass: posixGroup
+objectClass: top
+cn: sales
+gidNumber: 1009
+memberUid: pposit
+memberUid: npaloma
+memberUid: blee
+memberUid: dndiaye
+

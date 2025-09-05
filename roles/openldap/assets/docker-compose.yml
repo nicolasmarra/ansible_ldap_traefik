@@ -1,0 +1,19 @@
+services: 
+  openldap: 
+    image: bitnami/openldap:latest
+    container_name: openldap
+    ports:
+      - '1389:1389'
+    environment:
+      LDAP_ADMIN_USERNAME: admin
+      LDAP_ADMIN_PASSWORD: tprli
+      LDAP_ROOT: dc=ansible,dc=fr
+    volumes:
+      - /tmp/openldap_data:/bitnami/openldap
+    networks:
+      - openldap_net
+    user: root
+
+
+networks:
+  openldap_net:

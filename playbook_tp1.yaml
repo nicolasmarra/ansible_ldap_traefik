@@ -1,0 +1,10 @@
+- name: Déployer le serveur OpenLDAP et Traefik
+  hosts: test
+  roles:
+    - openldap
+    - traefik
+  
+- name: Déployer l'application web
+  hosts: all
+  roles:
+    - whoami

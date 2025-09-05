@@ -1,0 +1,48 @@
+services: 
+  whoami: 
+    image: traefik/whoami
+    container_name: whoami
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      # ldapAuth Register Middleware ====================================================
+      - traefik.http.routers.whoami.middlewares=ldap_auth
+      # ldapAuth Options=================================================================
+      - traefik.http.middlewares.ldap_auth.plugin.ldapAuth.enabled=true
+      - traefik.http.middlewares.ldap_auth.plugin.ldapAuth.logLevel=DEBUG
+      - traefik.http.middlewares.ldap_auth.plugin.ldapAuth.attribute=uid
+      - traefik.http.middlewares.ldap_auth.plugin.ldapAuth.baseDN=ou=People,dc=ansible,dc=fr
+      - traefik.http.middlewares.ldap_auth.plugin.ldapAuth.url=ldap://openldap
+      - traefik.http.middlewares.ldap_auth.plugin.ldapAuth.port=1389
+      # =================================================================================
+      
+    networks:
+      - traefik_net
+  
+  nginx:
+    image: nginx
+    container_name: nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`mon-site.localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.nginx.entrypoints=web"
+      - "traefik.http.middlewares.strip-api.stripprefix.prefixes=/api"
+      - "traefik.http.routers.nginx.middlewares=strip-api"
+    networks:
+      - traefik_net
+
+  apache:
+    image: httpd:latest
+    container_name: apache
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apache.rule=Host(`mon-site.localhost`) && PathPrefix(`/front`)"
+      - "traefik.http.middlewares.strip-front.stripprefix.prefixes=/front"
+      - "traefik.http.routers.apache.middlewares=strip-front"
+      - "traefik.http.routers.apache.entrypoints=web"
+    networks:
+      - traefik_net
+
+networks:
+  traefik_net:
